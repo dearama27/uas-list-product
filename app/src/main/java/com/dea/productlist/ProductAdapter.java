@@ -17,19 +17,19 @@ import com.dea.productlist.R;
 
 import java.util.ArrayList;
 
-public class NowPlayingAdapter extends RecyclerView.Adapter<NowPlayingAdapter.ViewHolder> {
+public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHolder> {
 
-    private ArrayList<NowPlaying> list;
+    private ArrayList<Product> list;
     Context context;
 
-    public NowPlayingAdapter(ArrayList<NowPlaying> list, Context context) {
+    public ProductAdapter(ArrayList<Product> list, Context context) {
         this.list = list;
         this.context = context;
     }
 
     @NonNull
     @Override
-    public NowPlayingAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public ProductAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         //menentukan layout yang telah ditentukan
         View view = LayoutInflater
                 .from(parent.getContext())
@@ -40,7 +40,7 @@ public class NowPlayingAdapter extends RecyclerView.Adapter<NowPlayingAdapter.Vi
     }
 
     @Override
-    public void onBindViewHolder(@NonNull NowPlayingAdapter.ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ProductAdapter.ViewHolder holder, int position) {
         //tempat menampilkan data ke dalam layout
         final String title, posterPath, releaseDate, overview;
 

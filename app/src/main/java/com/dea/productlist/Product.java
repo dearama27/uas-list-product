@@ -1,9 +1,9 @@
 package com.dea.productlist;
 
-public class NowPlaying {
+public class Product {
     String title, poster_path, release_date, overview;
 
-    public NowPlaying(String title, String poster_path, String release_date, String overview) {
+    public Product(String title, String poster_path, String release_date, String overview) {
         this.title = title;
         this.poster_path = poster_path;
         this.release_date = release_date;

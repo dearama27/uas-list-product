@@ -31,7 +31,7 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity {
 
     RecyclerView rv;
-    ArrayList<NowPlaying> list;
+    ArrayList<Product> list;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,7 +74,7 @@ public class MainActivity extends AppCompatActivity {
                                     JSONObject data = json.getJSONObject(i);
 
                                     //masukkan kedalam class
-                                    list.add(new NowPlaying(
+                                    list.add(new Product(
                                             data.getString("name").toString().trim(),
                                             data.getString("thumb").toString().trim(),
                                             data.getString("price").toString().trim(),
@@ -112,7 +112,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void showRecyclerView(ArrayList list) {
         rv.setLayoutManager(new LinearLayoutManager(MainActivity.this));
-        NowPlayingAdapter adapter = new NowPlayingAdapter(list, MainActivity.this);
+        ProductAdapter adapter = new ProductAdapter(list, MainActivity.this);
         rv.setAdapter(adapter);
     }
 

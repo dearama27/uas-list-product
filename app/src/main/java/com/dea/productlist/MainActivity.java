@@ -1,10 +1,17 @@
 package com.dea.productlist;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.KeyEvent;
+import android.view.inputmethod.EditorInfo;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -32,6 +39,7 @@ public class MainActivity extends AppCompatActivity {
 
     RecyclerView rv;
     ArrayList<Product> list;
+    EditText cariProduk;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,14 +47,30 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         rv = (RecyclerView) findViewById(R.id.rv_container) ;
+        cariProduk = (EditText) findViewById(R.id.cari_produk);
 
-        load();  // ambil data api
+        load("");  // ambil data api
+
+        cariProduk.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+
+                if (actionId == EditorInfo.IME_ACTION_DONE) {
+                    InputMethodManager imm = (InputMethodManager)v.getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
+                    imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
+                    load(cariProduk.getText().toString());
+                    Log.d("Cari", "onEditorAction: "+cariProduk.getText());
+                    return true;
+                }
+                return false;
+            }
+        });
     }
 
-    private void load() {
+    private void load(String query) {
         RequestQueue queue = Volley.newRequestQueue(getBaseContext());
 //        String url = "https://api.themoviedb.org/3/movie/now_playing?api_key=53d501a66e5727848b4593a55939f9cc&language=en-US";
-        String url = "https://demo.perkasafurniture.com/index.php?route=api/product&api_token&limit=20";
+        String url = "https://demo.perkasafurniture.com/index.php?route=api/product&api_token&limit=20&search="+query;
 
         Log.i (String.valueOf(R.string.app_name), url); //lihat url
 
@@ -113,6 +137,7 @@ public class MainActivity extends AppCompatActivity {
     private void showRecyclerView(ArrayList list) {
         rv.setLayoutManager(new LinearLayoutManager(MainActivity.this));
         ProductAdapter adapter = new ProductAdapter(list, MainActivity.this);
+        rv.setLayoutManager(new GridLayoutManager(this, 2));
         rv.setAdapter(adapter);
     }
 

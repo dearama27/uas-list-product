@@ -128,11 +128,11 @@
 
     </androidx.core.widget.NestedScrollView>
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:layout_height="wrap_content"
-        android:layout_width="wrap_content"
-        android:layout_margin="10dp"
-        android:src="@mipmap/ic_launcher"
-        app:layout_anchor="@id/appBar"
-        app:layout_anchorGravity="bottom|end" />
+<!--    <com.google.android.material.floatingactionbutton.FloatingActionButton-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_margin="10dp"-->
+<!--        android:src="@mipmap/ic_launcher"-->
+<!--        app:layout_anchor="@id/appBar"-->
+<!--        app:layout_anchorGravity="bottom|end" />-->
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -5,8 +5,18 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
     tools:context=".MainActivity">
 
+    <EditText
+        android:id="@+id/cari_produk"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Cari Produk"
+        android:background="@drawable/border"
+        android:inputType="text"
+        android:imeOptions="actionDone"></EditText>
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_container"
         android:layout_width="match_parent"
